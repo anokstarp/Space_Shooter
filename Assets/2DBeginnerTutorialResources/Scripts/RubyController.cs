@@ -14,6 +14,9 @@ public class RubyController : MonoBehaviour
     private Rigidbody2D rb2d;
     private SpriteRenderer spriteRenderer;
 
+    private ParticleSystem hitParticle;
+
+
     public AudioSource audioSource;
     public AudioClip healingSound;
     public AudioClip hittedSound;
@@ -31,7 +34,9 @@ public class RubyController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        //audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+
+        hitParticle = GetComponentInChildren<ParticleSystem>();
     }
 
     private void FixedUpdate()
@@ -44,6 +49,7 @@ public class RubyController : MonoBehaviour
     private void Start()
     {
         currentHp = maxHp;
+        hitParticle.Stop();
     }
 
     private void Update()
@@ -108,7 +114,10 @@ public class RubyController : MonoBehaviour
         isInvincible = true;
         invincibleTimer = timeInvincible;
 
-        AudioSource.PlayClipAtPoint(hittedSound, transform.position);
+        audioSource.PlayOneShot(hittedSound);
+
+        hitParticle.Stop();
+        hitParticle.Play();
     }
 
     public void HealHealth(int health)
@@ -117,6 +126,11 @@ public class RubyController : MonoBehaviour
         Debug.Log(currentHp);
 
         AudioSource.PlayClipAtPoint(healingSound, transform.position); //위치에 생성해서 소리 내는 전역메소드
+    }
+
+    public void GetAmmo(int ammo)
+    {
+        return;
     }
 
     IEnumerator Invincible()

@@ -18,6 +18,9 @@ public class ClockworkController : MonoBehaviour
     private Rigidbody2D rb2d;
     private BoxCollider2D co2d;
 
+    public ParticleSystem smoke;
+    public ParticleSystem spark;
+
     private Vector2 lookDirection = new Vector2(1, 0);
     private Vector2 direction;
 
@@ -31,6 +34,9 @@ public class ClockworkController : MonoBehaviour
     private void Start()
     {
         currentHp = maxHp;
+
+        smoke.Play();
+        spark.Stop();
     }
 
     private void FixedUpdate()
@@ -75,6 +81,8 @@ public class ClockworkController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (animator.GetBool("Fix")) return;
+
         currentHp = Mathf.Clamp(currentHp - damage, 0, maxHp);
 
         if (currentHp <= 0)
@@ -82,6 +90,9 @@ public class ClockworkController : MonoBehaviour
             animator.SetBool("Fix", true);
             xSpeed = 0f;
             co2d.isTrigger = true;
+
+            spark.Play();
+            smoke.Stop();
         }
     }
 
