@@ -7806,6 +7806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   projectilePrefab: {fileID: 2723952556702817844, guid: f7a1722b1b09306408c75c5a2de96daa, type: 3}
+  HPUI: {fileID: 988696674}
   audioSource: {fileID: 0}
   healingSound: {fileID: 8300000, guid: af5f8b64e3f58f24c87ff8f789b04f6c, type: 3}
   hittedSound: {fileID: 8300000, guid: 9b1bb1f450b7d444fa4a8019d13519a7, type: 3}
@@ -7983,6 +7984,17 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 4806005571263713688, guid: 1cbf3e1d34d27ca4ba7b7ebc380ce8c6, type: 3}
   m_PrefabInstance: {fileID: 1419055346}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2098440986 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3326474145088925351, guid: 1cbf3e1d34d27ca4ba7b7ebc380ce8c6, type: 3}
+  m_PrefabInstance: {fileID: 7267053269838176428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2129263535
 GameObject:
   m_ObjectHideFlags: 0
@@ -8167,6 +8179,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3457300794522430004, guid: 1cbf3e1d34d27ca4ba7b7ebc380ce8c6, type: 3}
+      propertyPath: HPUI
+      value: 
+      objectReference: {fileID: 2098440986}
     - target: {fileID: 3457300794522430004, guid: 1cbf3e1d34d27ca4ba7b7ebc380ce8c6, type: 3}
       propertyPath: smoke
       value: 

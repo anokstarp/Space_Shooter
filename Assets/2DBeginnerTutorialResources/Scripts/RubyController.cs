@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class RubyController : MonoBehaviour
 {
     public float speed = 4f;
-    private int maxHp = 50;
+    private int maxHp = 10;
     private int currentHp;
 
     public Projectile projectilePrefab;
@@ -16,7 +18,7 @@ public class RubyController : MonoBehaviour
 
     private ParticleSystem hitParticle;
 
-
+    public Image HPUI;
     public AudioSource audioSource;
     public AudioClip healingSound;
     public AudioClip hittedSound;
@@ -54,7 +56,9 @@ public class RubyController : MonoBehaviour
 
     private void Update()
     {
-        if(isInvincible)
+        HPUI.fillAmount = Mathf.Lerp(HPUI.fillAmount, (float)currentHp / maxHp, Time.deltaTime * 10);
+
+        if (isInvincible)
         {
             invincibleTimer -= Time.deltaTime;
             if(invincibleTimer < 0 )
@@ -115,6 +119,8 @@ public class RubyController : MonoBehaviour
         invincibleTimer = timeInvincible;
 
         audioSource.PlayOneShot(hittedSound);
+
+        
 
         hitParticle.Stop();
         hitParticle.Play();

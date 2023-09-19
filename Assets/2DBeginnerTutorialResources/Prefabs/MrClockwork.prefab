@@ -232,8 +232,9 @@ MonoBehaviour:
   damage: 1
   currentHp: 0
   maxHp: 3
-  smoke: {fileID: 2366242003119722550, guid: 24ae4bfd160f6dd46a155f95ec83cb21, type: 3}
-  spark: {fileID: 1392165475232761946, guid: 23241ca5c42aa0444add201e4608a2aa, type: 3}
+  HPUI: {fileID: 3326474145088925351}
+  smoke: {fileID: 7418248482470671386}
+  spark: {fileID: 4806005571263713688}
 --- !u!61 &6372241267984676750
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -323,6 +324,7 @@ MonoBehaviour:
   damage: 1
   currentHp: 0
   maxHp: 3
+  HPUI: {fileID: 0}
   smoke: {fileID: 2366242003119722550, guid: 24ae4bfd160f6dd46a155f95ec83cb21, type: 3}
   spark: {fileID: 1392165475232761946, guid: 23241ca5c42aa0444add201e4608a2aa, type: 3}
 --- !u!1 &9107379819295987008
@@ -489,6 +491,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24ae4bfd160f6dd46a155f95ec83cb21, type: 3}
+--- !u!198 &7418248482470671386 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2366242003119722550, guid: 24ae4bfd160f6dd46a155f95ec83cb21, type: 3}
+  m_PrefabInstance: {fileID: 5054302259646686252}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7991475214225419199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2937210612868927379, guid: 24ae4bfd160f6dd46a155f95ec83cb21, type: 3}
@@ -524,7 +531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9070448084387352884, guid: 23241ca5c42aa0444add201e4608a2aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9070448084387352884, guid: 23241ca5c42aa0444add201e4608a2aa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -566,5 +573,10 @@ PrefabInstance:
 --- !u!4 &3171413732273211638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9070448084387352884, guid: 23241ca5c42aa0444add201e4608a2aa, type: 3}
+  m_PrefabInstance: {fileID: 5900748525116266946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4806005571263713688 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1392165475232761946, guid: 23241ca5c42aa0444add201e4608a2aa, type: 3}
   m_PrefabInstance: {fileID: 5900748525116266946}
   m_PrefabAsset: {fileID: 0}

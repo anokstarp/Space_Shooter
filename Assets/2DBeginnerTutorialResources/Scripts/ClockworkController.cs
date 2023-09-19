@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClockworkController : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class ClockworkController : MonoBehaviour
     private Rigidbody2D rb2d;
     private BoxCollider2D co2d;
 
+    public Image HPUI;
     public ParticleSystem smoke;
     public ParticleSystem spark;
 
@@ -48,6 +50,8 @@ public class ClockworkController : MonoBehaviour
 
     private void Update()
     {
+        HPUI.fillAmount = Mathf.Lerp(HPUI.fillAmount, (float)currentHp / maxHp, Time.deltaTime * 10);
+
         //var h = Input.GetAxis("Horizontal");
         //var v = Input.GetAxis("Vertical");
         TurnLeftRight();
