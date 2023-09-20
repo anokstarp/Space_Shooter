@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
         timer = destructTime;
     }
 
-    public void Update()
+    private void Update()
     {
         Destruct();
     }

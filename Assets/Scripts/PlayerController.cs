@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.PlayerSettings;
 
 public class PlayerController : MonoBehaviour
 {
     public float AtkDelay;
     public float followSpeed;
     public float bulletForce;
+    public int HealthPoint;
 
     private float atkTimer;
     private int atkLevel = 1;
+    private bool isDie = false;
 
     public GameObject EngineEffect;
+    public ParticleSystem ExplosionEffect;
     public Projectile ProjectilePrefab;
 
     public GameObject LeftGun;
@@ -54,7 +56,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Attack();
-
+        
         if(Input.GetKeyDown(KeyCode.PageUp))
         {
             atkLevel++;
@@ -63,10 +65,18 @@ public class PlayerController : MonoBehaviour
         {
             atkLevel--;
         }
+
+        if(HealthPoint <= 0 && !ExplosionEffect.isPlaying)
+        {
+            GameManager.Instance.GameOver();
+            gameObject.SetActive(false);
+        }
     }
 
     private void Attack()
     {
+        if (isDie) return;
+
         atkTimer -= Time.deltaTime;
         if (atkTimer > 0) return;
         atkTimer = AtkDelay;
@@ -114,6 +124,7 @@ public class PlayerController : MonoBehaviour
 
     private void FollowMouse()
     {
+        if (isDie) return;
         if (!Input.GetMouseButton(0)) return;
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -122,5 +133,20 @@ public class PlayerController : MonoBehaviour
         Vector3 position = rb2d.position;
 
         rb2d.transform.position = Vector3.Lerp(position, mousePos, Time.deltaTime * followSpeed);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (isDie) return;
+        HealthPoint -= damage;
+        
+        if(HealthPoint <= 0)
+        {
+            ExplosionEffect.Stop();
+            ExplosionEffect.Play();
+
+            isDie = true;
+            GetComponent<Renderer>().enabled = false;
+        }
     }
 }
